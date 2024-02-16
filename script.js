@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const numberOfParticipants = parseInt(document.getElementById("numberOfParticipants").value, 10);
 
         // Verifica se o número de participantes é válido
-        if (numberOfParticipants < 1 || numberOfParticipants > 10) {
-            alert("Por favor, escolha um número válido de participantes (entre 1 e 10).");
+        if (numberOfParticipants < 1 || numberOfParticipants > 30) {
+            alert("Por favor, escolha um número válido de participantes (entre 1 e 30).");
             return;
         }
 
@@ -73,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
 
 
 
