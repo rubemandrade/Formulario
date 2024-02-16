@@ -56,6 +56,10 @@ select {
 
 #additionalInfo {
     margin-top: 20px;
+    border: 1px solid #ddd; /* Adiciona borda leve */
+    border-radius: 8px; /* Adiciona bordas arredondadas */
+    padding: 15px; /* Adiciona preenchimento */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona sombreado cinza leve */
 }
 
 /* Estilos específicos para os campos do responsável */
@@ -80,4 +84,5 @@ button {
 button:hover {
     background-color: #45a049;
 }
+
 
