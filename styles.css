@@ -63,11 +63,12 @@ select {
 }
 
 /* Estilos específicos para os campos do responsável */
+label[for="owner"],
 label[for="email"],
 label[for="phone"],
 label[for="state"],
 label[for="city"] {
-    font-size: 14px; /* Fonte menor */
+    font-size: 12px; /* Fonte menor */
     font-weight: bold; /* Negrito */
     color: #555; /* Cor cinza */
 }
