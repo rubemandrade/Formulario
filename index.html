@@ -3,39 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscrição Entremesclar</title>
+    <title>Formulário de Inscrição</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1>Conferência</h1>
+    </header>
 
-    <div id="form-container">
-        <h2>Inscrição para Entremesclar</h2>
-        <form id="conference-form">
-            <label for="numParticipants">Número de Participantes (máx. 10): </label>
-            <input type="number" id="numParticipants" min="1" max="10" required>
-            <button type="button" onclick="generateForm()">Gerar Formulário</button>
+    <form id="registrationForm" style="display:none;">
+        <!-- Seu formulário HTML aqui -->
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required>
 
-            <div id="participants-container"></div>
+        <label for="lastname">Sobrenome:</label>
+        <input type="text" id="lastname" name="lastname" required>
 
-            <label for="email">E-mail do Responsável: </label>
-            <input type="email" id="email" required>
+        <label for="age">Idade:</label>
+        <input type="text" id="age" name="age" required>
 
-            <label for="phone">Telefone do Responsável: </label>
-            <input type="tel" id="phone" required>
+        <label for="accommodation">Precisa de hospedagem:</label>
+        <select id="accommodation" name="accommodation" required>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
 
-            <label for="city">Localidade: </label>
-            <input type="text" id="city" required>
+        <button onclick="generateForm()">Gerar formulário</button>
 
-            <label for="state">Estado: </label>
-            <input type="text" id="state" required>
+        <!-- Informações adicionais visíveis após clicar em "Gerar formulário" -->
+        <div id="additionalInfo" style="display:none;">
+            <label for="email">Seu E-mail:</label>
+            <input type="email" id="email" name="email" required>
 
-            <button type="button" onclick="submitForm()">Enviar Inscrição</button>
-        </form>
-    </div>
+            <label for="phone">Seu telefone:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="city">Sua cidade:</label>
+            <input type="text" id="city" name="city" required>
+
+            <label for="state">Seu estado:</label>
+            <input type="text" id="state" name="state" required>
+        </div>
+
+        <button type="submit">Enviar formulário</button>
+    </form>
 
     <script src="script.js"></script>
-</body>
-</html>
-
 </body>
 </html>
