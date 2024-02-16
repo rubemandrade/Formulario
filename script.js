@@ -48,4 +48,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Adiciona um ouvinte de evento ao botão
     document.getElementById("generateButton").addEventListener("click", generateForm);
+
+    // Adiciona uma máscara para o telefone no padrão brasileiro
+    const phoneInput = document.getElementById("phone");
+    new IMask(phoneInput, {
+        mask: '+55 (00) 00000-0000',
+    });
+
+    // Adiciona um ouvinte de evento ao formulário para validação
+    const registrationForm = document.getElementById("registrationForm");
+    registrationForm.addEventListener("submit", function (event) {
+        // Verifica se todos os campos estão preenchidos
+        const formInputs = registrationForm.querySelectorAll("input, select");
+        for (const input of formInputs) {
+            if (!input.checkValidity()) {
+                alert("Por favor, preencha todos os campos obrigatórios corretamente.");
+                event.preventDefault(); // Impede o envio do formulário
+                return;
+            }
+        }
+    });
 });
+
