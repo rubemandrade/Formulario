@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const numberOfParticipants = parseInt(document.getElementById("numberOfParticipants").value, 10);
 
         // Atualiza a exibição do valor escolhido
-        document.getElementById("participantsOutput").textContent = numberOfParticipants;
+        document.querySelector("output[for='numberOfParticipants']").textContent = numberOfParticipants;
+
 
         // Obtém a div onde os formulários dos participantes serão inseridos
         const participantFormDiv = document.getElementById("participantForm");
