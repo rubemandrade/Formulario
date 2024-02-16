@@ -9,16 +9,21 @@ document.addEventListener("DOMContentLoaded", function () {
         numberOfParticipantsOutput.textContent = numberOfParticipantsInput.value;
     });
 
-    // Função para ser chamada quando o botão for clicado
-    function generateForm() {
-        // Verifica se os campos adicionais estão preenchidos
+    // Função para validar se as informações adicionais foram preenchidas
+    function validateAdditionalInfo() {
         const owner = document.getElementById("owner").value;
         const email = document.getElementById("email").value;
         const phone = document.getElementById("phone").value;
         const city = document.getElementById("city").value;
         const state = document.getElementById("state").value;
 
-        if (!owner || !email || !phone || !city || !state) {
+        return owner && email && phone && city && state;
+    }
+
+    // Função para ser chamada quando o botão for clicado
+    function generateForm() {
+        // Verifica se as informações adicionais estão preenchidas
+        if (!validateAdditionalInfo()) {
             alert("Por favor, preencha todos os campos obrigatórios nas informações adicionais.");
             return;
         }
@@ -64,37 +69,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Mostra o bloco de informações adicionais
         document.getElementById("additionalInfo").style.display = "block";
-
-        // Adiciona o botão "Adicionar +1 Participante" ao final do formulário
-        const addParticipantButton = document.createElement("button");
-        addParticipantButton.setAttribute("type", "button");
-        addParticipantButton.setAttribute("id", "addParticipantButton");
-        addParticipantButton.textContent = "Adicionar +1 Participante";
-        addParticipantButton.addEventListener("click", addParticipant);
-        participantFormDiv.appendChild(addParticipantButton);
-    }
-
-    // Função para adicionar +1 participante
-    function addParticipant() {
-        const currentNumberOfParticipants = parseInt(numberOfParticipantsInput.value, 10);
-
-        // Verifica se ainda há espaço para adicionar mais participantes
-        if (currentNumberOfParticipants < 30) {
-            // Incrementa o número de participantes
-            numberOfParticipantsInput.value = currentNumberOfParticipants + 1;
-
-            // Atualiza a exibição do valor escolhido
-            document.querySelector("output[for='numberOfParticipants']").textContent = numberOfParticipantsInput.value;
-
-            // Chama a função para gerar o formulário
-            generateForm();
-        } else {
-            alert("Número máximo de participantes atingido (30).");
-        }
     }
 
     // Adiciona ouvinte de evento ao botão Gerar Formulário
     document.getElementById("generateButton").addEventListener("click", generateForm);
+
+    // Adiciona ouvinte de evento ao formulário para validação antes de submeter
+    document.getElementById("registrationForm").addEventListener("submit", function (event) {
+        // Verifica se as informações adicionais estão preenchidas
+        if (!validateAdditionalInfo()) {
+            alert("Por favor, preencha todos os campos obrigatórios nas informações adicionais.");
+            event.preventDefault(); // Impede o envio do formulário
+        }
+    });
 });
+
 
 
