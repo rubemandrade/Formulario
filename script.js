@@ -3,14 +3,20 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Função para ser chamada quando o botão for clicado
     function generateForm() {
-        // Obtém o número de participantes do input
-        const numberOfParticipants = parseInt(document.getElementById("numberOfParticipants").value, 10);
+        // Verifica se os campos adicionais estão preenchidos
+        const owner = document.getElementById("owner").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const city = document.getElementById("city").value;
+        const state = document.getElementById("state").value;
 
-        // Verifica se o número de participantes é válido
-        if (numberOfParticipants < 1 || numberOfParticipants > 30) {
-            alert("Por favor, escolha um número válido de participantes (entre 1 e 30).");
+        if (!owner || !email || !phone || !city || !state) {
+            alert("Por favor, preencha todos os campos obrigatórios nas informações adicionais.");
             return;
         }
+
+        // Obtém o número de participantes do input
+        const numberOfParticipants = parseInt(document.getElementById("numberOfParticipants").value, 10);
 
         // Atualiza a exibição do valor escolhido
         document.getElementById("participantsOutput").textContent = numberOfParticipants;
@@ -50,9 +56,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Mostra o bloco de informações adicionais
         document.getElementById("additionalInfo").style.display = "block";
-
-        // Mostra o botão Adicionar +1 Participante
-        document.getElementById("addParticipantButton").style.display = "block";
     }
 
     // Função para adicionar +1 participante
@@ -99,3 +102,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
