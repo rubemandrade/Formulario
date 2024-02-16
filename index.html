@@ -18,20 +18,24 @@
     </div>
 
     <form id="registrationForm" style="display:none;">
-        <!-- Campos do formulário aqui -->
-        <div id="additionalInfo" style="display:none;">
-            <label for="email">Seu E-mail:</label>
-            <input type="email" id="email" name="email" required>
+        <div id="participantsContainer"></div>
+        
+        <!-- Campos do responsável pelo formulário -->
+        <label for="email">E-mail do responsável:</label>
+        <input type="email" id="email" name="email" required>
 
-            <label for="phone">Seu telefone:</label>
-            <input type="tel" id="phone" name="phone" required>
+        <label for="phone">Telefone do responsável:</label>
+        <input type="tel" id="phone" name="phone" required>
 
-            <label for="city">Sua cidade:</label>
-            <input type="text" id="city" name="city" required>
+        <label for="state">UF:</label>
+        <select id="state" name="state" required>
+            <!-- Opções dos estados aqui -->
+        </select>
 
-            <label for="state">Seu estado:</label>
-            <input type="text" id="state" name="state" required>
-        </div>
+        <label for="city">Cidade:</label>
+        <select id="city" name="city" required>
+            <!-- Opções das cidades aqui -->
+        </select>
 
         <button type="submit">Enviar formulário</button>
     </form>
