@@ -1,3 +1,5 @@
+/* styles.css */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -33,6 +35,14 @@ select {
     box-sizing: border-box;
 }
 
+/* Diminui o tamanho dos campos específicos */
+#email,
+#phone,
+#state,
+#city {
+    width: 50%; /* Ajuste a largura conforme necessário */
+}
+
 #participantForm {
     margin-top: 20px;
 }
@@ -53,7 +63,7 @@ label[for="email"],
 label[for="phone"],
 label[for="state"],
 label[for="city"] {
-    font-size: 12px; /* Fonte menor */
+    font-size: 14px; /* Fonte menor */
     font-weight: bold; /* Negrito */
     color: #555; /* Cor cinza */
 }
@@ -70,3 +80,4 @@ button {
 button:hover {
     background-color: #45a049;
 }
+
