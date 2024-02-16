@@ -22,6 +22,8 @@
             <input type="range" id="numberOfParticipants" name="numberOfParticipants" min="1" max="30" value="1" required>
             <output for="numberOfParticipants" id="participantsOutput">1</output>
 
+            <div id="participantForm"></div>
+
             <div id="additionalInfo">
                 <h2>Quem é o responsável por estas inscrições?</h2>
                 
@@ -39,20 +41,19 @@
                 
                 <label for="state">UF:</label>
                 <input type="text" id="state" name="state" required>
-
-                <!-- Botão Gerar Formulário movido para o final da sessão additionalInfo -->
-                <button type="button" id="generateButton">Gerar Formulário</button>
-
-                <!-- Botão Adicionar +1 Participante -->
-                <button type="button" id="addParticipantButton">Adicionar +1 Participante</button>
             </div>
-        </form>
 
-        <div id="participantForm"></div>
+            <!-- Botão Adicionar +1 Participante -->
+            <button type="button" id="addParticipantButton">Adicionar +1 Participante</button>
+
+            <!-- Botão Gerar Formulário movido para o final do formulário -->
+            <button type="button" id="generateButton">Gerar Formulário</button>
+        </form>
     </div>
 
     <script src="https://unpkg.com/imask"></script>
     <script src="script.js"></script>
 </body>
 </html>
+
 
