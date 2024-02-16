@@ -53,7 +53,7 @@ label[for="email"],
 label[for="phone"],
 label[for="state"],
 label[for="city"] {
-    font-size: 14px; /* Fonte menor */
+    font-size: 10px; /* Fonte menor */
     font-weight: bold; /* Negrito */
     color: #555; /* Cor cinza */
 }
