@@ -3,8 +3,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Adiciona ouvinte de evento ao input de range para atualizar em tempo real
     const numberOfParticipantsInput = document.getElementById("numberOfParticipants");
+    const numberOfParticipantsOutput = document.querySelector("output[for='numberOfParticipants']");
+    numberOfParticipantsOutput.textContent = numberOfParticipantsInput.value; // Inicializa o valor
     numberOfParticipantsInput.addEventListener("input", function () {
-        document.querySelector("output[for='numberOfParticipants']").textContent = numberOfParticipantsInput.value;
+        numberOfParticipantsOutput.textContent = numberOfParticipantsInput.value;
     });
 
     // Função para ser chamada quando o botão for clicado
@@ -62,6 +64,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Mostra o bloco de informações adicionais
         document.getElementById("additionalInfo").style.display = "block";
+
+        // Adiciona o botão "Adicionar +1 Participante" ao final do formulário
+        const addParticipantButton = document.createElement("button");
+        addParticipantButton.setAttribute("type", "button");
+        addParticipantButton.setAttribute("id", "addParticipantButton");
+        addParticipantButton.textContent = "Adicionar +1 Participante";
+        addParticipantButton.addEventListener("click", addParticipant);
+        participantFormDiv.appendChild(addParticipantButton);
     }
 
     // Função para adicionar +1 participante
@@ -85,29 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Adiciona ouvinte de evento ao botão Gerar Formulário
     document.getElementById("generateButton").addEventListener("click", generateForm);
-
-    // Adiciona ouvinte de evento ao botão Adicionar +1 Participante
-    document.getElementById("addParticipantButton").addEventListener("click", addParticipant);
-
-    // Adiciona uma máscara para o telefone no padrão brasileiro e pré-preenche
-    const phoneInput = document.getElementById("phone");
-    const phoneMask = new IMask(phoneInput, {
-        mask: '+55 (00) 00000-0000',
-    });
-    phoneMask.value = '+55 (11) 98765-4321'; // Substitua com o valor desejado
-
-    // Adiciona ouvinte de evento ao formulário para validação
-    const registrationForm = document.getElementById("registrationForm");
-    registrationForm.addEventListener("submit", function (event) {
-        // Verifica se todos os campos estão preenchidos
-        const formInputs = registrationForm.querySelectorAll("input, select");
-        for (const input of formInputs) {
-            if (!input.checkValidity()) {
-                alert("Por favor, preencha todos os campos obrigatórios corretamente.");
-                event.preventDefault(); // Impede o envio do formulário
-                return;
-            }
-        }
-    });
 });
+
 
