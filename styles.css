@@ -48,6 +48,16 @@ select {
     margin-top: 20px;
 }
 
+/* Estilos específicos para os campos do responsável */
+label[for="email"],
+label[for="phone"],
+label[for="state"],
+label[for="city"] {
+    font-size: 14px; /* Fonte menor */
+    font-weight: bold; /* Negrito */
+    color: #555; /* Cor cinza */
+}
+
 button {
     background-color: #4caf50;
     color: #fff;
