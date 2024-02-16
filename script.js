@@ -50,6 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Mostra o bloco de informações adicionais
         document.getElementById("additionalInfo").style.display = "block";
+
+        // Mostra o botão Adicionar +1 Participante
+        document.getElementById("addParticipantButton").style.display = "block";
     }
 
     // Função para adicionar +1 participante
