@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
+        // Atualiza a exibição do valor escolhido
+        document.getElementById("participantsOutput").textContent = numberOfParticipants;
+
         // Obtém a div onde os formulários dos participantes serão inseridos
         const participantFormDiv = document.getElementById("participantForm");
 
@@ -71,6 +74,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
         }
+    });
+
+    // Adiciona um ouvinte de evento para atualizar o valor exibido do intervalo
+    document.getElementById("numberOfParticipants").addEventListener("input", function () {
+        document.getElementById("participantsOutput").textContent = this.value;
     });
 });
 
