@@ -1,38 +1,19 @@
 // script.js
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Adiciona ouvinte de evento ao input de range para atualizar em tempo real
-    const numberOfParticipantsInput = document.getElementById("numberOfParticipants");
-    const numberOfParticipantsOutput = document.querySelector("output[for='numberOfParticipants']");
-    numberOfParticipantsOutput.textContent = numberOfParticipantsInput.value; // Inicializa o valor
-    numberOfParticipantsInput.addEventListener("input", function () {
-        numberOfParticipantsOutput.textContent = numberOfParticipantsInput.value;
-    });
-
-    // Função para validar se as informações adicionais foram preenchidas
-    function validateAdditionalInfo() {
-        const owner = document.getElementById("owner").value;
-        const email = document.getElementById("email").value;
-        const phone = document.getElementById("phone").value;
-        const city = document.getElementById("city").value;
-        const state = document.getElementById("state").value;
-
-        return owner && email && phone && city && state;
-    }
-
     // Função para ser chamada quando o botão for clicado
     function generateForm() {
-        // Verifica se as informações adicionais estão preenchidas
-        if (!validateAdditionalInfo()) {
-            alert("Por favor, preencha todos os campos obrigatórios nas informações adicionais.");
-            return;
-        }
-
         // Obtém o número de participantes do input
         const numberOfParticipants = parseInt(document.getElementById("numberOfParticipants").value, 10);
 
+        // Verifica se o número de participantes é válido
+        if (numberOfParticipants < 1 || numberOfParticipants > 30) {
+            alert("Por favor, escolha um número válido de participantes (entre 1 e 30).");
+            return;
+        }
+
         // Atualiza a exibição do valor escolhido
-        document.querySelector("output[for='numberOfParticipants']").textContent = numberOfParticipants;
+        document.getElementById("participantsOutput").textContent = numberOfParticipants;
 
         // Obtém a div onde os formulários dos participantes serão inseridos
         const participantFormDiv = document.getElementById("participantForm");
@@ -71,18 +52,36 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("additionalInfo").style.display = "block";
     }
 
-    // Adiciona ouvinte de evento ao botão Gerar Formulário
+    // Adiciona um ouvinte de evento ao botão
     document.getElementById("generateButton").addEventListener("click", generateForm);
 
-    // Adiciona ouvinte de evento ao formulário para validação antes de submeter
-    document.getElementById("registrationForm").addEventListener("submit", function (event) {
-        // Verifica se as informações adicionais estão preenchidas
-        if (!validateAdditionalInfo()) {
-            alert("Por favor, preencha todos os campos obrigatórios nas informações adicionais.");
-            event.preventDefault(); // Impede o envio do formulário
+    // Adiciona uma máscara para o telefone no padrão brasileiro e pré-preenche
+    const phoneInput = document.getElementById("phone");
+    const phoneMask = new IMask(phoneInput, {
+        mask: '+55 (00) 00000-0000',
+    });
+    phoneMask.value = '+55 (11) 98765-4321'; // Substitua com o valor desejado
+
+    // Adiciona um ouvinte de evento ao formulário para validação
+    const registrationForm = document.getElementById("registrationForm");
+    registrationForm.addEventListener("submit", function (event) {
+        // Verifica se todos os campos estão preenchidos
+        const formInputs = registrationForm.querySelectorAll("input, select");
+        for (const input of formInputs) {
+            if (!input.checkValidity()) {
+                alert("Por favor, preencha todos os campos obrigatórios corretamente.");
+                event.preventDefault(); // Impede o envio do formulário
+                return;
+            }
         }
     });
+
+    // Adiciona um ouvinte de evento para atualizar o valor exibido do intervalo
+    document.getElementById("numberOfParticipants").addEventListener("input", function () {
+        document.getElementById("participantsOutput").textContent = this.value;
+    });
 });
+
 
 
 
