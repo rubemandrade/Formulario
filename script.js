@@ -3,11 +3,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     // Função para ser chamada quando o botão for clicado
     function generateForm() {
-        // Mostra o formulário principal
-        document.getElementById("registrationForm").style.display = "block";
-
         // Obtém o número de participantes do input
         const numberOfParticipants = parseInt(document.getElementById("numberOfParticipants").value, 10);
+
+        // Verifica se o número de participantes é válido
+        if (numberOfParticipants < 1 || numberOfParticipants > 10) {
+            alert("Por favor, escolha um número válido de participantes (entre 1 e 10).");
+            return;
+        }
 
         // Obtém a div onde os formulários dos participantes serão inseridos
         const participantFormDiv = document.getElementById("participantForm");
@@ -70,5 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
 
 
