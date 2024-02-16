@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const phoneMask = new IMask(phoneInput, {
         mask: '+55 (00) 00000-0000',
     });
-    phoneMask.value = '+55 (11) 98765-4321'; // Substitua com o valor desejado
+    phoneMask.value = '+55 (11) 9XXX-XXXX'; // Substitua com o valor desejado
 
     // Adiciona ouvinte de evento ao formulário para validação
     const registrationForm = document.getElementById("registrationForm");
