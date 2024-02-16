@@ -36,20 +36,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     <option value="sim">Sim</option>
                     <option value="nao">Não</option>
                 </select>
-
-                <label for="phone${i}">Telefone:</label>
-                <input type="text" id="phone${i}" name="phone${i}" required pattern="\+[0-9]{2} [0-9]{2} [0-9]{9}">
             `;
 
             // Adiciona o formulário do participante à div principal
             participantFormDiv.appendChild(participantDiv);
-
-            // Aplica a formatação para o formato brasileiro ao campo de telefone
-            const phoneInput = participantDiv.querySelector(`#phone${i}`);
-            new IMask(phoneInput, {
-                mask: '+00 00 000000000',
-                lazy: false,
-            });
         }
 
         // Mostra o bloco de informações adicionais
@@ -59,5 +49,3 @@ document.addEventListener("DOMContentLoaded", function () {
     // Adiciona um ouvinte de evento ao botão
     document.getElementById("generateButton").addEventListener("click", generateForm);
 });
-
-
