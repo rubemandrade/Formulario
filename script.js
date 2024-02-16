@@ -1,78 +1,57 @@
-// script.js
+<!-- index.html -->
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Função para ser chamada quando o botão for clicado
-    function generateForm() {
-        // Obtém o número de participantes do input
-        const numberOfParticipants = parseInt(document.getElementById("numberOfParticipants").value, 10);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Inscrição</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-        // Verifica se o número de participantes é válido
-        if (numberOfParticipants < 1 || numberOfParticipants > 10) {
-            alert("Por favor, escolha um número válido de participantes (entre 1 e 10).");
-            return;
-        }
+    <header>
+        <h1>Entremesclar - Igrejas do Grande ABC</h1>
+    </header>
 
-        // Obtém a div onde os formulários dos participantes serão inseridos
-        const participantFormDiv = document.getElementById("participantForm");
+    <div id="participantInfo">
+        <h2>Dados da Inscrição</h2>
+        <form id="registrationForm">
+            <label for="numberOfParticipants">Número de Participantes (máx. 30):</label>
+            <input type="range" id="numberOfParticipants" name="numberOfParticipants" min="1" max="30" value="1" required>
+            <output for="numberOfParticipants" id="participantsOutput">1</output>
 
-        // Limpa qualquer conteúdo anterior
-        participantFormDiv.innerHTML = '';
+            <div id="additionalInfo">
+                <h2>Quem é o responsável por estas inscrições?</h2>
+                
+                <label for="owner">Nome do responsável:</label>
+                <input type="text" id="owner" name="owner" required>
+                
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
 
-        // Gera os campos para cada participante
-        for (let i = 1; i <= numberOfParticipants; i++) {
-            const participantDiv = document.createElement("div");
-            participantDiv.classList.add("participant");
+                <label for="phone">WhatsApp para contato:</label>
+                <input type="text" id="phone" name="phone" required pattern="\+[0-9]{2} [0-9]{2} [0-9]{9}">
+                
+                <label for="city">Cidade:</label>
+                <input type="text" id="city" name="city" required>
+                
+                <label for="state">UF:</label>
+                <input type="text" id="state" name="state" required>
 
-            participantDiv.innerHTML = `
-                <h2>Participante ${i}</h2>
-                <label for="name${i}">Nome:</label>
-                <input type="text" id="name${i}" name="name${i}" required>
+                <!-- Botão Gerar Formulário movido para o final da sessão additionalInfo -->
+                <button type="button" id="generateButton">Gerar Formulário</button>
+            </div>
+        </form>
 
-                <label for="lastname${i}">Sobrenome:</label>
-                <input type="text" id="lastname${i}" name="lastname${i}" required>
+        <div id="participantForm"></div>
+    </div>
 
-                <label for="age${i}">Idade:</label>
-                <input type="text" id="age${i}" name="age${i}" required>
+    <script src="https://unpkg.com/imask"></script>
+    <script src="script.js"></script>
+</body>
+</html>
 
-                <label for="accommodation${i}">Precisa de hospedagem?</label>
-                <select id="accommodation${i}" name="accommodation${i}" required>
-                    <option value="nao">Não</option>
-                    <option value="sim">Sim</option>
-                </select>
-            `;
-
-            // Adiciona o formulário do participante à div principal
-            participantFormDiv.appendChild(participantDiv);
-        }
-
-        // Mostra o bloco de informações adicionais
-        document.getElementById("additionalInfo").style.display = "block";
-    }
-
-    // Adiciona um ouvinte de evento ao botão
-    document.getElementById("generateButton").addEventListener("click", generateForm);
-
-    // Adiciona uma máscara para o telefone no padrão brasileiro e pré-preenche
-    const phoneInput = document.getElementById("phone");
-    const phoneMask = new IMask(phoneInput, {
-        mask: '+55 (00) 00000-0000',
-    });
-    phoneMask.value = '+55 (11) 98765-4321'; // Substitua com o valor desejado
-
-    // Adiciona um ouvinte de evento ao formulário para validação
-    const registrationForm = document.getElementById("registrationForm");
-    registrationForm.addEventListener("submit", function (event) {
-        // Verifica se todos os campos estão preenchidos
-        const formInputs = registrationForm.querySelectorAll("input, select");
-        for (const input of formInputs) {
-            if (!input.checkValidity()) {
-                alert("Por favor, preencha todos os campos obrigatórios corretamente.");
-                event.preventDefault(); // Impede o envio do formulário
-                return;
-            }
-        }
-    });
-});
 
 
 
