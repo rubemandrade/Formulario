@@ -7,13 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const numberOfParticipants = parseInt(document.getElementById("numberOfParticipants").value, 10);
 
         // Verifica se o número de participantes é válido
-        if (numberOfParticipants < 1 || numberOfParticipants > 30) {
-            alert("Por favor, escolha um número válido de participantes (entre 1 e 30).");
+        if (numberOfParticipants < 1 || numberOfParticipants > 10) {
+            alert("Por favor, escolha um número válido de participantes (entre 1 e 10).");
             return;
         }
-
-        // Atualiza a exibição do valor escolhido
-        document.getElementById("participantsOutput").textContent = numberOfParticipants;
 
         // Obtém a div onde os formulários dos participantes serão inseridos
         const participantFormDiv = document.getElementById("participantForm");
@@ -74,11 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
         }
-    });
-
-    // Adiciona um ouvinte de evento para atualizar o valor exibido do intervalo
-    document.getElementById("numberOfParticipants").addEventListener("input", function () {
-        document.getElementById("participantsOutput").textContent = this.value;
     });
 });
 
