@@ -1,43 +1,52 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Inscrição</title>
+    <title>Conferência</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
 </head>
 <body>
+
     <header>
-        <h1>Inscrição - Entremesclar das Igrejas</h1>
+        <h1>Conferência</h1>
     </header>
 
-    <div id="participantInfo" style="display:block;">
-        <label for="numberOfParticipants">Número de Participantes (máximo 10):</label>
-        <input type="number" id="numberOfParticipants" name="numberOfParticipants" min="1" max="10" required>
-        <button id="generateButton" onclick="generateForm()">Gerar formulário</button>
-    </div>
+    <div id="participantInfo">
+        <h2>Informações do Participante</h2>
+        <form id="registrationForm">
+            <label for="numberOfParticipants">Número de Participantes (máx. 10):</label>
+            <input type="number" id="numberOfParticipants" name="numberOfParticipants" min="1" max="10" required>
 
-    <form id="registrationForm" style="display:none;">
-        <!-- Campos do formulário aqui -->
+            <button type="button" id="generateButton">Gerar Formulário</button>
+        </form>
+
         <div id="participantForm"></div>
 
-        <div id="additionalInfo" style="display:none;">
-            <label for="email">E-mail do responsável:</label>
+        <div id="additionalInfo">
+            <h2>Informações Adicionais do Responsável</h2>
+            <label for="email">Seu E-mail:</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="phone">WhatsApp do responsável:</label>
-            <input type="tel" id="phone" name="phone" required>
+            <label for="phone">Seu Telefone:</label>
+            <input type="text" id="phone" name="phone" required pattern="\+[0-9]{2} [0-9]{2} [0-9]{9}">
 
-            <label for="state">Estado:</label>
+            <label for="state">UF:</label>
             <input type="text" id="state" name="state" required>
 
-            <label for="city">Localidade:</label>
+            <label for="city">Cidade:</label>
             <input type="text" id="city" name="city" required>
-        </div>
 
-        <button type="submit">Enviar formulário</button>
-    </form>
+            <label for="owner">Responsável pela Inscrição:</label>
+            <input type="text" id="owner" name="owner" required>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/imask"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+
 
