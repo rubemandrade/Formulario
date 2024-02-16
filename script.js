@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 <label for="accommodation${i}">Precisa de hospedagem?</label>
                 <select id="accommodation${i}" name="accommodation${i}" required>
-                    <option value="sim">Sim</option>
                     <option value="nao">Não</option>
+                    <option value="sim">Sim</option>
                 </select>
             `;
 
@@ -49,11 +49,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Adiciona um ouvinte de evento ao botão
     document.getElementById("generateButton").addEventListener("click", generateForm);
 
-    // Adiciona uma máscara para o telefone no padrão brasileiro
+    // Adiciona uma máscara para o telefone no padrão brasileiro e pré-preenche
     const phoneInput = document.getElementById("phone");
-    new IMask(phoneInput, {
+    const phoneMask = new IMask(phoneInput, {
         mask: '+55 (00) 00000-0000',
     });
+    phoneMask.value = '+55 (11) 98765-4321'; // Substitua com o valor desejado
 
     // Adiciona um ouvinte de evento ao formulário para validação
     const registrationForm = document.getElementById("registrationForm");
@@ -69,4 +70,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
