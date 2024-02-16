@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Inscrição</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <header>
@@ -18,29 +19,25 @@
     </div>
 
     <form id="registrationForm" style="display:none;">
-        <div id="participantsContainer"></div>
-        
-        <!-- Campos do responsável pelo formulário -->
-        <label for="email">E-mail do responsável:</label>
-        <input type="email" id="email" name="email" required>
+        <!-- Campos do formulário aqui -->
+        <div id="participantForm"></div>
 
-        <label for="phone">Telefone do responsável:</label>
-        <input type="tel" id="phone" name="phone" required>
+        <div id="additionalInfo" style="display:none;">
+            <label for="email">E-mail do responsável pela inscrição:</label>
+            <input type="email" id="email" name="email" required>
 
-        <label for="state">UF:</label>
-        <select id="state" name="state" required>
-            <!-- Opções dos estados aqui -->
-        </select>
+            <label for="phone">Telefone do responsável:</label>
+            <input type="tel" id="phone" name="phone" required>
 
-        <label for="city">Cidade:</label>
-        <select id="city" name="city" required>
-            <!-- Opções das cidades aqui -->
-        </select>
+            <label for="state">UF do responsável:</label>
+            <input type="text" id="state" name="state" required>
+
+            <label for="city">Cidade do responsável:</label>
+            <input type="text" id="city" name="city" required>
+        </div>
 
         <button type="submit">Enviar formulário</button>
     </form>
-
-    <script src="script.js"></script>
 </body>
 </html>
 
