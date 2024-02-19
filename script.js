@@ -12,10 +12,18 @@ document.addEventListener("DOMContentLoaded", function () {
     let numberOfParticipants = 0;
 
     document.getElementById("startRegistrationButton").addEventListener("click", function () {
+        const conferenceParticipant = document.getElementById("conferenceParticipant").value;
+        if (conferenceParticipant === "sim") {
+            // Se o responsável participará, o nome dele será o do primeiro participante
+            numberOfParticipants = 1;
+            document.getElementById("fullName1").value = document.getElementById("owner").value;
+            document.getElementById("age1").focus(); // Foca no próximo campo
+        } else {
+            numberOfParticipants = 0;
+            createParticipantFields();
+        }
         initialInfo.style.display = "none";
         participantForm.style.display = "block";
-        createParticipantFields();
-        addParticipant(); // Adiciona campos para o primeiro participante
     });
 
     function createParticipantFields() {
@@ -84,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
         addParticipant();
     });
 });
+
 
 
 
