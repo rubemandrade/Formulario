@@ -3,15 +3,7 @@ body {
     font-family: Arial, sans-serif; /* Define a fonte padrão */
     margin: 20px; /* Adiciona margem ao redor da página */
     padding: 0; /* Remove o preenchimento padrão */
-    background-color: #f0f2f5; /* Define a cor de fundo */
-}
-
-/* Estilos para o cabeçalho */
-header {
-    background-color: #4285f4; /* Cor do Google Blue */
-    color: #fff; /* Define a cor do texto */
-    padding: 20px; /* Adiciona preenchimento interno */
-    text-align: center; /* Centraliza o texto */
+    background-color: #f5f5f5; /* Define a cor de fundo */
 }
 
 /* Estilos para o contêiner principal */
@@ -24,14 +16,9 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
 }
 
-/* Estilos para os títulos */
-h1, h2, h3 {
-    font-size: 20px; /* Define o tamanho da fonte */
-    margin-bottom: 15px; /* Adiciona espaço abaixo do título */
-}
-
 /* Estilos para os rótulos */
 label {
+    font-size: 16px; /* Define o tamanho da fonte */
     font-weight: bold; /* Define o texto em negrito */
 }
 
@@ -40,7 +27,7 @@ input[type="text"],
 input[type="number"],
 input[type="email"],
 select {
-    width: calc(100% - 20px); /* Define a largura total */
+    width: 100%; /* Define a largura total */
     padding: 10px; /* Adiciona preenchimento interno */
     margin-bottom: 15px; /* Adiciona espaço abaixo do campo */
     border: 1px solid #ccc; /* Adiciona uma borda sólida */
@@ -49,7 +36,7 @@ select {
     font-size: 14px; /* Define o tamanho da fonte */
 }
 
-/* Estilos para os botões */
+/* Estilos para o botão */
 button {
     background-color: #4285f4; /* Cor do Google Blue */
     color: #fff; /* Define a cor do texto */
@@ -57,7 +44,7 @@ button {
     border: none; /* Remove a borda */
     border-radius: 4px; /* Adiciona cantos arredondados */
     cursor: pointer; /* Altera o cursor ao passar */
-    font-size: 14px; /* Define o tamanho da fonte */
+    font-size: 16px; /* Define o tamanho da fonte */
     margin-right: 10px; /* Adiciona espaço à direita */
 }
 
@@ -66,20 +53,19 @@ button:hover {
 }
 
 /* Estilos para a lista de participantes */
-.participant-list {
-    list-style-type: none; /* Remove a estilização padrão de lista */
-    padding: 0; /* Remove o preenchimento interno da lista */
+#participantList {
+    margin-top: 10px; /* Adiciona espaço acima da lista */
 }
 
-/* Estilos para os itens da lista de participantes */
-.participant-list li {
-    font-size: 14px; /* Tamanho da fonte */
-    margin-bottom: 5px; /* Adiciona espaço entre os itens da lista */
+/* Estilos para o resumo da inscrição */
+#totalParticipants {
+    font-weight: bold; /* Define o texto em negrito */
 }
 
 /* Estilos para a linha divisória */
 hr {
-    margin: 20px 0; /* Adiciona espaço acima e abaixo da linha divisória */
+    margin-top: 10px; /* Adiciona espaço acima da linha */
+    margin-bottom: 20px; /* Adiciona espaço abaixo da linha */
     border: none; /* Remove a borda */
     border-top: 1px solid #ccc; /* Adiciona uma linha sólida com cor cinza */
 }
