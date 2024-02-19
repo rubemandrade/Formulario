@@ -46,4 +46,58 @@ document.addEventListener("DOMContentLoaded", function () {
             <input type="text" id="fullName${numberOfParticipants}" name="fullName${numberOfParticipants}" required>
 
             <label for="age${numberOfParticipants}">Idade:</label>
-           
+            <input type="number" id="age${numberOfParticipants}" name="age${numberOfParticipants}" min="0" max="999" required>
+
+            <label for="gender${numberOfParticipants}">Sexo:</label>
+            <select id="gender${numberOfParticipants}" name="gender${numberOfParticipants}" required>
+                <option value="">Selecione</option>
+                <option value="F">Feminino</option>
+                <option value="M">Masculino</option>
+            </select>
+
+            <label for="accommodation${numberOfParticipants}">Precisa de Hospedagem?</label>
+            <select id="accommodation${numberOfParticipants}" name="accommodation${numberOfParticipants}" required>
+                <option value="">Selecione</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select>
+        `;
+
+        participantRegistrationForm.appendChild(participantDiv);
+        document.getElementById(`fullName${numberOfParticipants}`).focus();
+    }
+
+    function collectParticipantData() {
+        const participantsData = [];
+        for (let i = 1; i <= numberOfParticipants; i++) {
+            const participant = {
+                fullName: document.getElementById(`fullName${i}`).value,
+                age: document.getElementById(`age${i}`).value,
+                gender: document.getElementById(`gender${i}`).value,
+                accommodation: document.getElementById(`accommodation${i}`).value
+            };
+            participantsData.push(participant);
+        }
+        return participantsData;
+    }
+
+    document.getElementById("addParticipantButton").addEventListener("click", function () {
+        addParticipant();
+    });
+
+    document.getElementById("reviewAndSubmitButton").addEventListener("click", function () {
+        const participantsData = collectParticipantData();
+        totalParticipantsDiv.textContent = `Total de Participantes: ${numberOfParticipants}`;
+        participantListDiv.innerHTML = "";
+        participantsData.forEach(participant => {
+            participantListDiv.innerHTML += `<p>${participant.fullName}</p>`;
+        });
+        participantForm.style.display = "none";
+        summary.style.display = "block";
+    });
+
+    document.getElementById("submitButton").addEventListener("click", function () {
+        alert("Obrigado e boa conferência!");
+        location.reload(); // Recarrega a página após submissão
+    });
+});
