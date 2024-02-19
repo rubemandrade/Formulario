@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("startRegistrationButton").addEventListener("click", function () {
         initialInfo.style.display = "none";
         participantForm.style.display = "block";
-        addParticipant(); // Adiciona campos para o primeiro participante
         createParticipantFields();
+        addParticipant(); // Adiciona campos para o primeiro participante
     });
 
     function createParticipantFields() {
         participantRegistrationForm.innerHTML = "";
-        for (let i = 2; i <= numberOfParticipants; i++) { // Começa com 2 pois o participante 1 já está sendo exibido
+        for (let i = 1; i <= numberOfParticipants; i++) {
             addParticipant();
         }
     }
@@ -63,11 +63,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function displaySummary() {
         totalParticipantsDiv.textContent = `Total de Inscritos: ${numberOfParticipants}`;
-        participantListDiv.textContent = "Lista de Inscritos:";
+        participantListDiv.innerHTML = "<h3>Lista de Inscritos (por ordem alfabética):</h3>";
+        const names = [];
         for (let i = 1; i <= numberOfParticipants; i++) {
             const fullName = document.getElementById(`fullName${i}`).value;
-            participantListDiv.textContent += `\n- ${fullName}`;
+            names.push(fullName);
         }
+        names.sort();
+        names.forEach(name => {
+            participantListDiv.innerHTML += `<p>${name}</p>`;
+        });
     }
 
     document.getElementById("submitButton").addEventListener("click", function () {
@@ -79,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         addParticipant();
     });
 });
+
 
 
 
