@@ -73,7 +73,13 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("submitButton").addEventListener("click", function () {
         alert("Obrigado e boa conferência!");
     });
+
+    // Adiciona um novo participante ao clicar no botão "Adicionar Novo Participante"
+    document.getElementById("addParticipantButton").addEventListener("click", function () {
+        addParticipant();
+    });
 });
+
 
 
 
