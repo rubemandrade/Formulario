@@ -14,41 +14,44 @@
         <h1>Entremesclar - Igrejas do Grande ABC</h1>
     </header>
 
-    <div id="initialInfo">
-        <h2>Informações do Responsável pela Inscrição</h2>
-        <form id="registrationForm">
-            <label for="owner">Nome do Responsável:</label>
-            <input type="text" id="owner" name="owner" required>
+    <div class="container">
+        <div id="initialInfo">
+            <h2>Informações do Responsável pela Inscrição</h2>
+            <form id="registrationForm">
+                <label for="owner">Nome do Responsável:</label>
+                <input type="text" id="owner" name="owner" required>
 
-            <label for="location">Localidade:</label>
-            <input type="text" id="location" name="location" required>
+                <label for="location">Localidade:</label>
+                <input type="text" id="location" name="location" required>
 
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
 
-            <label for="phone">WhatsApp para Contato:</label>
-            <input type="text" id="phone" name="phone" required pattern="\+[0-9]{2} [0-9]{2} [0-9]{9}">
+                <label for="phone">WhatsApp para Contato:</label>
+                <input type="text" id="phone" name="phone" required pattern="\+[0-9]{2} [0-9]{2} [0-9]{9}">
 
-            <button type="button" id="startRegistrationButton">Iniciar Inscrição</button>
-        </form>
-    </div>
+                <button type="button" id="startRegistrationButton">Iniciar Inscrição</button>
+            </form>
+        </div>
 
-    <div id="participantForm" style="display: none;">
-        <h2>Preenchimento dos Participantes</h2>
-        <form id="participantRegistrationForm">
-            <!-- Campos dos participantes serão gerados dinamicamente aqui -->
-        </form>
-        <button type="button" id="addParticipantButton">Adicionar Novo Participante</button>
-        <button type="button" id="reviewAndSubmitButton">Revisar e Enviar</button>
-    </div>
+        <div id="participantForm" style="display: none;">
+            <h2>Preenchimento dos Participantes</h2>
+            <form id="participantRegistrationForm">
+                <!-- Campos dos participantes serão gerados dinamicamente aqui -->
+            </form>
+            <button type="button" id="addParticipantButton">Adicionar Novo Participante</button>
+            <button type="button" id="reviewAndSubmitButton">Revisar e Enviar</button>
+        </div>
 
-    <div id="summary" style="display: none;">
-        <h2>Resumo da Inscrição</h2>
-        <div id="totalParticipants"></div>
-        <div id="participantList"></div>
-        <button type="button" id="submitButton">Enviar</button>
+        <div id="summary" style="display: none;">
+            <h2>Resumo da Inscrição</h2>
+            <div id="totalParticipants"></div>
+            <div id="participantList"></div>
+            <button type="button" id="submitButton">Enviar</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
 </html>
+
