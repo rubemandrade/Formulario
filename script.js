@@ -12,18 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let numberOfParticipants = 0;
 
     document.getElementById("startRegistrationButton").addEventListener("click", function () {
-        const conferenceParticipant = document.getElementById("conferenceParticipant").value;
-        if (conferenceParticipant === "sim") {
-            numberOfParticipants = 1;
-            document.getElementById("fullName1").value = document.getElementById("owner").value;
-            initialInfo.style.display = "none";
-            participantForm.style.display = "block";
-        } else {
-            numberOfParticipants = 0;
-            createParticipantFields();
-            initialInfo.style.display = "none";
-            participantForm.style.display = "block";
-        }
+        numberOfParticipants = 1;
+        initialInfo.style.display = "none";
+        participantForm.style.display = "block";
+        createParticipantFields();
     });
 
     function createParticipantFields() {
@@ -34,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function addParticipant() {
-        numberOfParticipants++;
         const participantDiv = document.createElement("div");
         participantDiv.classList.add("participant");
 
@@ -66,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.getElementById("addParticipantButton").addEventListener("click", function () {
+        numberOfParticipants++;
         addParticipant();
     });
 
