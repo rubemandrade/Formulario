@@ -55,38 +55,26 @@ document.addEventListener("DOMContentLoaded", function () {
         const summary = document.getElementById("summary");
         summary.innerHTML = "";
 
-        const responsibleName = document.getElementById("name").value;
-        const responsibleLocation = document.getElementById("location").value;
-        const responsibleEmail = document.getElementById("email").value;
-        const responsiblePhone = document.getElementById("phone").value;
+        const participantList = document.createElement("ul");
+        participantList.classList.add("participant-list");
 
-        const summaryList = document.createElement("ul");
-        const responsibleInfo = document.createElement("li");
-        responsibleInfo.innerHTML = `<strong>Nome do Responsável:</strong> ${responsibleName}<br>
-                                     <strong>Localidade:</strong> ${responsibleLocation}<br>
-                                     <strong>E-mail:</strong> ${responsibleEmail}<br>
-                                     <strong>WhatsApp:</strong> ${responsiblePhone}`;
-        summaryList.appendChild(responsibleInfo);
-
-        const participantNames = [];
         for (let i = 1; i <= participantCounter; i++) {
-            const participantName = document.getElementById(`name${i}`).value;
-            participantNames.push(participantName);
+            const name = document.getElementById(`name${i}`).value;
+            const age = document.getElementById(`age${i}`).value;
+
+            const participantItem = document.createElement("li");
+            participantItem.textContent = `Nome: ${name}, Idade: ${age}`;
+            participantList.appendChild(participantItem);
         }
 
-        participantNames.sort();
-        const participantsInfo = document.createElement("li");
-        participantsInfo.innerHTML = "<strong>Participantes:</strong>";
-        const participantsList = document.createElement("ul");
-        participantNames.forEach(name => {
-            const listItem = document.createElement("li");
-            listItem.textContent = name;
-            participantsList.appendChild(listItem);
-        });
-        participantsInfo.appendChild(participantsList);
+        summary.appendChild(participantList);
 
-        summary.appendChild(summaryList);
-        summary.appendChild(participantsInfo);
+        const divider = document.createElement("hr");
+        summary.appendChild(divider);
+
+        const totalParticipants = document.createElement("p");
+        totalParticipants.textContent = `Total de inscrições: ${participantCounter}`;
+        summary.appendChild(totalParticipants);
     }
 
     function submit() {
