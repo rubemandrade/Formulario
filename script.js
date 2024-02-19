@@ -1,93 +1,96 @@
-// script.js
-
 document.addEventListener("DOMContentLoaded", function () {
-    const registrationForm = document.getElementById("registrationForm");
-    const participantRegistrationForm = document.getElementById("participantRegistrationForm");
-    const initialInfo = document.getElementById("initialInfo");
-    const participantForm = document.getElementById("participantForm");
-    const summary = document.getElementById("summary");
-    const totalParticipantsDiv = document.getElementById("totalParticipants");
-    const participantListDiv = document.getElementById("participantList");
+    const startRegistrationButton = document.getElementById("startRegistrationButton");
+    const addParticipantButton = document.getElementById("addParticipantButton");
+    const reviewAndSubmitButton = document.getElementById("reviewAndSubmitButton");
+    const submitButton = document.getElementById("submitButton");
 
-    let numberOfParticipants = 0;
+    startRegistrationButton.addEventListener("click", startRegistration);
+    addParticipantButton.addEventListener("click", addParticipant);
+    reviewAndSubmitButton.addEventListener("click", reviewAndSubmit);
+    submitButton.addEventListener("click", submit);
 
-    document.getElementById("startRegistrationButton").addEventListener("click", function () {
-        numberOfParticipants = 1;
-        initialInfo.style.display = "none";
-        participantForm.style.display = "block";
-        createParticipantFields();
-    });
+    let participantCounter = 1;
 
-    function createParticipantFields() {
-        participantRegistrationForm.innerHTML = "";
-        for (let i = 1; i <= numberOfParticipants; i++) {
-            addParticipant();
-        }
+    function startRegistration() {
+        document.getElementById("participantSection").style.display = "block";
+        document.getElementById("summarySection").style.display = "none";
+        document.getElementById("name1").focus();
     }
 
     function addParticipant() {
+        participantCounter++;
+        const participantForm = document.getElementById("participantForm");
         const participantDiv = document.createElement("div");
         participantDiv.classList.add("participant");
 
         participantDiv.innerHTML = `
-            <h3>Participante ${numberOfParticipants}</h3>
-            <label for="fullName${numberOfParticipants}">Nome Completo:</label>
-            <input type="text" id="fullName${numberOfParticipants}" name="fullName${numberOfParticipants}" required>
+            <h3>Participante ${participantCounter}</h3>
+            <label for="name${participantCounter}">Nome:</label>
+            <input type="text" id="name${participantCounter}" name="name${participantCounter}" required>
 
-            <label for="age${numberOfParticipants}">Idade:</label>
-            <input type="number" id="age${numberOfParticipants}" name="age${numberOfParticipants}" min="0" max="999" required>
+            <label for="age${participantCounter}">Idade:</label>
+            <input type="number" id="age${participantCounter}" name="age${participantCounter}" min="0" max="999" required>
 
-            <label for="gender${numberOfParticipants}">Sexo:</label>
-            <select id="gender${numberOfParticipants}" name="gender${numberOfParticipants}" required>
-                <option value="">Selecione</option>
-                <option value="F">Feminino</option>
-                <option value="M">Masculino</option>
+            <label for="gender${participantCounter}">Sexo:</label>
+            <select id="gender${participantCounter}" name="gender${participantCounter}" required>
+                <option value="Feminino">Feminino</option>
+                <option value="Masculino">Masculino</option>
             </select>
 
-            <label for="accommodation${numberOfParticipants}">Precisa de Hospedagem?</label>
-            <select id="accommodation${numberOfParticipants}" name="accommodation${numberOfParticipants}" required>
-                <option value="">Selecione</option>
-                <option value="sim">Sim</option>
-                <option value="nao">Não</option>
+            <label for="accommodation${participantCounter}">Precisa de Hospedagem?</label>
+            <select id="accommodation${participantCounter}" name="accommodation${participantCounter}" required>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
             </select>
         `;
 
-        participantRegistrationForm.appendChild(participantDiv);
-        document.getElementById(`fullName${numberOfParticipants}`).focus();
+        participantForm.appendChild(participantDiv);
+        document.getElementById(`name${participantCounter}`).focus();
     }
 
-    document.getElementById("addParticipantButton").addEventListener("click", function () {
-        numberOfParticipants++;
-        addParticipant();
-    });
+    function reviewAndSubmit() {
+        document.getElementById("summarySection").style.display = "block";
+        document.getElementById("participantSection").style.display = "none";
 
-    document.getElementById("reviewAndSubmitButton").addEventListener("click", function () {
-        const participantsData = collectParticipantData();
-        totalParticipantsDiv.textContent = `Total de Participantes: ${numberOfParticipants}`;
-        participantListDiv.innerHTML = "";
-        participantsData.forEach(participant => {
-            participantListDiv.innerHTML += `<p>${participant.fullName}</p>`;
-        });
-        participantForm.style.display = "none";
-        summary.style.display = "block";
-    });
+        const summary = document.getElementById("summary");
+        summary.innerHTML = "";
 
-    document.getElementById("submitButton").addEventListener("click", function () {
-        alert("Obrigado e boa conferência!");
-        location.reload(); // Recarrega a página após submissão
-    });
+        const responsibleName = document.getElementById("name").value;
+        const responsibleLocation = document.getElementById("location").value;
+        const responsibleEmail = document.getElementById("email").value;
+        const responsiblePhone = document.getElementById("phone").value;
 
-    function collectParticipantData() {
-        const participantsData = [];
-        for (let i = 1; i <= numberOfParticipants; i++) {
-            const participant = {
-                fullName: document.getElementById(`fullName${i}`).value,
-                age: document.getElementById(`age${i}`).value,
-                gender: document.getElementById(`gender${i}`).value,
-                accommodation: document.getElementById(`accommodation${i}`).value
-            };
-            participantsData.push(participant);
+        const summaryList = document.createElement("ul");
+        const responsibleInfo = document.createElement("li");
+        responsibleInfo.innerHTML = `<strong>Nome do Responsável:</strong> ${responsibleName}<br>
+                                     <strong>Localidade:</strong> ${responsibleLocation}<br>
+                                     <strong>E-mail:</strong> ${responsibleEmail}<br>
+                                     <strong>WhatsApp:</strong> ${responsiblePhone}`;
+        summaryList.appendChild(responsibleInfo);
+
+        const participantNames = [];
+        for (let i = 1; i <= participantCounter; i++) {
+            const participantName = document.getElementById(`name${i}`).value;
+            participantNames.push(participantName);
         }
-        return participantsData;
+
+        participantNames.sort();
+        const participantsInfo = document.createElement("li");
+        participantsInfo.innerHTML = "<strong>Participantes:</strong>";
+        const participantsList = document.createElement("ul");
+        participantNames.forEach(name => {
+            const listItem = document.createElement("li");
+            listItem.textContent = name;
+            participantsList.appendChild(listItem);
+        });
+        participantsInfo.appendChild(participantsList);
+
+        summary.appendChild(summaryList);
+        summary.appendChild(participantsInfo);
+    }
+
+    function submit() {
+        alert("Obrigado e boa conferência!");
+        location.reload();
     }
 });
