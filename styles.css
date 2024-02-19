@@ -1,7 +1,7 @@
 /* Estilos para o corpo da página */
 body {
     font-family: Arial, sans-serif; /* Define a fonte padrão */
-    margin: 0; /* Remove as margens padrão */
+    margin: 20px; /* Define as margens externas */
     padding: 0; /* Remove o preenchimento padrão */
     background-color: #f0f2f5; /* Define a cor de fundo */
 }
@@ -12,12 +12,13 @@ header {
     color: #fff; /* Define a cor do texto */
     padding: 20px; /* Adiciona preenchimento interno */
     text-align: center; /* Centraliza o texto */
+    margin-bottom: 20px; /* Adiciona espaço abaixo do cabeçalho */
 }
 
 /* Estilos para o contêiner principal */
 .container {
     max-width: 800px; /* Define a largura máxima */
-    margin: 20px auto; /* Centraliza horizontalmente */
+    margin: 0 auto; /* Centraliza horizontalmente */
     background-color: #fff; /* Define a cor de fundo */
     padding: 20px; /* Adiciona preenchimento interno */
     border-radius: 8px; /* Adiciona cantos arredondados */
@@ -25,7 +26,7 @@ header {
 }
 
 /* Estilos para os títulos */
-h1, h2, h3 {
+h1, h2 {
     font-size: 24px; /* Define o tamanho da fonte */
     margin-bottom: 20px; /* Adiciona espaço abaixo do título */
 }
@@ -33,21 +34,18 @@ h1, h2, h3 {
 /* Estilos para os rótulos */
 label {
     font-weight: bold; /* Define o texto em negrito */
-    font-size: 16px; /* Tamanho da fonte */
 }
 
 /* Estilos para os campos de entrada */
 input[type="text"],
 input[type="number"],
-input[type="email"],
 select {
-    width: 100%; /* Define a largura total */
+    width: calc(100% - 20px); /* Define a largura total */
     padding: 10px; /* Adiciona preenchimento interno */
     margin-bottom: 15px; /* Adiciona espaço abaixo do campo */
     border: 1px solid #ccc; /* Adiciona uma borda sólida */
     border-radius: 4px; /* Adiciona cantos arredondados */
     box-sizing: border-box; /* Define a caixa de modelo */
-    font-size: 16px; /* Tamanho da fonte */
 }
 
 /* Estilos para os botões */
@@ -59,6 +57,7 @@ button {
     border-radius: 4px; /* Adiciona cantos arredondados */
     cursor: pointer; /* Altera o cursor ao passar */
     font-size: 16px; /* Define o tamanho da fonte */
+    margin-bottom: 10px; /* Adiciona espaço abaixo do botão */
 }
 
 button:hover {
@@ -66,9 +65,9 @@ button:hover {
 }
 
 /* Estilos para a lista de participantes */
-#participantList p {
+#participantList {
     font-size: 16px; /* Tamanho da fonte */
-    margin-bottom: 5px; /* Adiciona espaço entre os itens da lista */
+    margin-bottom: 20px; /* Adiciona espaço abaixo da lista de participantes */
 }
 
 /* Estilos para a linha divisória */
@@ -77,3 +76,4 @@ hr {
     border: none; /* Remove a borda */
     border-top: 1px solid #ccc; /* Adiciona uma linha sólida com cor cinza */
 }
+
