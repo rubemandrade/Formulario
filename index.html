@@ -14,46 +14,68 @@
         <h1>Entremesclar - Igrejas do Grande ABC</h1>
     </header>
 
-    <div class="container">
-        <div id="initialInfo">
-            <h2>Informações do Responsável pela Inscrição</h2>
-            <form id="registrationForm">
-                <label for="owner">Nome do Responsável:</label>
-                <input type="text" id="owner" name="owner" required>
+    <div id="initialInfo">
+        <h2>Informações do Responsável pela Inscrição</h2>
+        <form id="registrationForm">
+            <label for="owner">Nome do Responsável:</label>
+            <input type="text" id="owner" name="owner" required>
 
-                <div class="input-group">
-                    <div class="input-row">
-                        <label for="email">E-mail:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="input-row">
-                        <label for="phone">WhatsApp para Contato:</label>
-                        <input type="text" id="phone" name="phone" required pattern="\+[0-9]{2} [0-9]{2} [0-9]{9}">
-                    </div>
-                </div>
+            <label for="location">Localidade:</label>
+            <select id="location" name="location" required>
+                <option value="">Selecione a cidade</option>
+                <option value="Aracaju - SE">Aracaju - SE</option>
+                <option value="Belém - PA">Belém - PA</option>
+                <option value="Belo Horizonte - MG">Belo Horizonte - MG</option>
+                <option value="Boa Vista - RR">Boa Vista - RR</option>
+                <option value="Brasília - DF">Brasília - DF</option>
+                <option value="Campo Grande - MS">Campo Grande - MS</option>
+                <option value="Cuiabá - MT">Cuiabá - MT</option>
+                <option value="Curitiba - PR">Curitiba - PR</option>
+                <option value="Florianópolis - SC">Florianópolis - SC</option>
+                <option value="Fortaleza - CE">Fortaleza - CE</option>
+                <option value="Goiânia - GO">Goiânia - GO</option>
+                <option value="João Pessoa - PB">João Pessoa - PB</option>
+                <option value="Macapá - AP">Macapá - AP</option>
+                <option value="Maceió - AL">Maceió - AL</option>
+                <option value="Manaus - AM">Manaus - AM</option>
+                <option value="Natal - RN">Natal - RN</option>
+                <option value="Palmas - TO">Palmas - TO</option>
+                <option value="Porto Alegre - RS">Porto Alegre - RS</option>
+                <option value="Porto Velho - RO">Porto Velho - RO</option>
+                <option value="Recife - PE">Recife - PE</option>
+                <option value="Rio Branco - AC">Rio Branco - AC</option>
+                <option value="Rio de Janeiro - RJ">Rio de Janeiro - RJ</option>
+                <option value="Salvador - BA">Salvador - BA</option>
+                <option value="São Luís - MA">São Luís - MA</option>
+                <option value="São Paulo - SP">São Paulo - SP</option>
+                <option value="Teresina - PI">Teresina - PI</option>
+                <option value="Vitória - ES">Vitória - ES</option>
+            </select>
 
-                <label for="location">Localidade:</label>
-                <input type="text" id="location" name="location" required>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required>
 
-                <button type="button" id="startRegistrationButton">Iniciar Inscrição</button>
-            </form>
-        </div>
+            <label for="phone">WhatsApp para Contato:</label>
+            <input type="text" id="phone" name="phone" required pattern="\+[0-9]{2} [0-9]{2} [0-9]{9}">
 
-        <div id="participantForm" style="display: none;">
-            <h2>Preenchimento dos Participantes</h2>
-            <form id="participantRegistrationForm">
-                <!-- Campos dos participantes serão gerados dinamicamente aqui -->
-            </form>
-            <button type="button" id="addParticipantButton">Adicionar Novo Participante</button>
-            <button type="button" id="reviewAndSubmitButton">Revisar e Enviar</button>
-        </div>
+            <button type="button" id="startRegistrationButton">Iniciar Inscrição</button>
+        </form>
+    </div>
 
-        <div id="summary" style="display: none;">
-            <h2>Resumo da Inscrição</h2>
-            <div id="totalParticipants"></div>
-            <div id="participantList"></div>
-            <button type="button" id="submitButton">Enviar</button>
-        </div>
+    <div id="participantForm" style="display: none;">
+        <h2>Preenchimento dos Participantes</h2>
+        <form id="participantRegistrationForm">
+            <!-- Campos dos participantes serão gerados dinamicamente aqui -->
+        </form>
+        <button type="button" id="addParticipantButton">Adicionar Novo Participante</button>
+        <button type="button" id="reviewAndSubmitButton">Revisar e Enviar</button>
+    </div>
+
+    <div id="summary" style="display: none;">
+        <h2>Resumo da Inscrição</h2>
+        <div id="totalParticipants"></div>
+        <div id="participantList"></div>
+        <button type="button" id="submitButton">Enviar</button>
     </div>
 
     <script src="script.js"></script>
