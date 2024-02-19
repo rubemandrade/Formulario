@@ -1,82 +1,82 @@
-/* Estilos para o corpo da página */
+/* styles.css */
+
 body {
-    font-family: Arial, sans-serif; /* Define a fonte padrão */
-    margin: 0; /* Remove as margens padrão */
-    padding: 0; /* Remove o preenchimento padrão */
-    background-color: #f0f2f5; /* Define a cor de fundo */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
 }
 
-/* Estilos para o cabeçalho */
 header {
-    background-color: #1976d2; /* Define a cor de fundo */
-    color: #fff; /* Define a cor do texto */
-    padding: 20px; /* Adiciona preenchimento interno */
-    text-align: center; /* Centraliza o texto */
+    background-color: #1976d2;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
 }
 
-/* Estilos para o contêiner principal */
 .container {
-    max-width: 800px; /* Define a largura máxima */
-    margin: 20px auto; /* Centraliza horizontalmente */
-    background-color: #fff; /* Define a cor de fundo */
-    padding: 20px; /* Adiciona preenchimento interno */
-    border-radius: 8px; /* Adiciona cantos arredondados */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos para os títulos */
 h1, h2 {
-    font-size: 24px; /* Define o tamanho da fonte */
-    margin-bottom: 20px; /* Adiciona espaço abaixo do título */
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
-/* Estilos para os rótulos */
 label {
-    font-weight: bold; /* Define o texto em negrito */
+    font-weight: bold;
 }
 
-/* Estilos para os campos de entrada */
 input[type="text"],
 input[type="number"],
 select {
-    width: 100%; /* Define a largura total */
-    padding: 10px; /* Adiciona preenchimento interno */
-    margin-bottom: 15px; /* Adiciona espaço abaixo do campo */
-    border: 1px solid #ccc; /* Adiciona uma borda sólida */
-    border-radius: 4px; /* Adiciona cantos arredondados */
-    box-sizing: border-box; /* Define a caixa de modelo */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-/* Estilos para os botões */
 button {
-    background-color: #1976d2; /* Define a cor de fundo */
-    color: #fff; /* Define a cor do texto */
-    padding: 10px 20px; /* Adiciona preenchimento interno */
-    border: none; /* Remove a borda */
-    border-radius: 4px; /* Adiciona cantos arredondados */
-    cursor: pointer; /* Altera o cursor ao passar */
-    font-size: 16px; /* Define o tamanho da fonte */
+    background-color: #1976d2;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover {
-    background-color: #135ba1; /* Altera a cor de fundo no hover */
+    background-color: #135ba1;
 }
 
-/* Estilos para a lista de participantes */
-.participant-list {
-    list-style-type: none; /* Remove a estilização padrão de lista */
-    padding: 0; /* Remove o preenchimento interno da lista */
+#summary {
+    text-align: center;
 }
 
-/* Estilos para os itens da lista de participantes */
-.participant-list li {
-    font-size: 14px; /* Tamanho da fonte */
-    margin-bottom: 5px; /* Adiciona espaço entre os itens da lista */
+#totalParticipants {
+    margin-bottom: 20px;
 }
 
-/* Estilos para a linha divisória */
+#participantList {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+#participantList p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
 hr {
-    margin: 20px 0; /* Adiciona espaço acima e abaixo da linha divisória */
-    border: none; /* Remove a borda */
-    border-top: 1px solid #ccc; /* Adiciona uma linha sólida com cor cinza */
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #ccc;
 }
