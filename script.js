@@ -94,15 +94,3 @@ document.addEventListener("DOMContentLoaded", function () {
         addParticipant();
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
