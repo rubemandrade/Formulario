@@ -12,13 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let numberOfParticipants = 0;
 
     document.getElementById("startRegistrationButton").addEventListener("click", function () {
-        if (registrationForm.checkValidity()) {
-            initialInfo.style.display = "none";
-            participantForm.style.display = "block";
-            createParticipantFields();
-        } else {
-            alert("Por favor, preencha todos os campos obrigatórios corretamente.");
-        }
+        initialInfo.style.display = "none";
+        participantForm.style.display = "block";
+        createParticipantFields();
     });
 
     function createParticipantFields() {
@@ -63,13 +59,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.getElementById("reviewAndSubmitButton").addEventListener("click", function () {
-        if (participantRegistrationForm.checkValidity()) {
-            participantForm.style.display = "none";
-            summary.style.display = "block";
-            displaySummary();
-        } else {
-            alert("Por favor, preencha todos os campos obrigatórios corretamente.");
-        }
+        participantForm.style.display = "none";
+        summary.style.display = "block";
+        displaySummary();
     });
 
     function displaySummary() {
@@ -85,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Obrigado e boa conferência!");
     });
 });
+
 
 
 
