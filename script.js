@@ -17,13 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
             // Se o responsável participará, o nome dele será o do primeiro participante
             numberOfParticipants = 1;
             document.getElementById("fullName1").value = document.getElementById("owner").value;
+            initialInfo.style.display = "none";
+            participantForm.style.display = "block";
             document.getElementById("age1").focus(); // Foca no próximo campo
         } else {
             numberOfParticipants = 0;
             createParticipantFields();
+            initialInfo.style.display = "none";
+            participantForm.style.display = "block";
         }
-        initialInfo.style.display = "none";
-        participantForm.style.display = "block";
     });
 
     function createParticipantFields() {
