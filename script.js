@@ -14,12 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("startRegistrationButton").addEventListener("click", function () {
         const conferenceParticipant = document.getElementById("conferenceParticipant").value;
         if (conferenceParticipant === "sim") {
-            // Se o responsável participará, o nome dele será o do primeiro participante
             numberOfParticipants = 1;
             document.getElementById("fullName1").value = document.getElementById("owner").value;
             initialInfo.style.display = "none";
             participantForm.style.display = "block";
-            document.getElementById("age1").focus(); // Foca no próximo campo
         } else {
             numberOfParticipants = 0;
             createParticipantFields();
@@ -67,20 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById(`fullName${numberOfParticipants}`).focus();
     }
 
-    function collectParticipantData() {
-        const participantsData = [];
-        for (let i = 1; i <= numberOfParticipants; i++) {
-            const participant = {
-                fullName: document.getElementById(`fullName${i}`).value,
-                age: document.getElementById(`age${i}`).value,
-                gender: document.getElementById(`gender${i}`).value,
-                accommodation: document.getElementById(`accommodation${i}`).value
-            };
-            participantsData.push(participant);
-        }
-        return participantsData;
-    }
-
     document.getElementById("addParticipantButton").addEventListener("click", function () {
         addParticipant();
     });
@@ -100,4 +84,18 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Obrigado e boa conferência!");
         location.reload(); // Recarrega a página após submissão
     });
+
+    function collectParticipantData() {
+        const participantsData = [];
+        for (let i = 1; i <= numberOfParticipants; i++) {
+            const participant = {
+                fullName: document.getElementById(`fullName${i}`).value,
+                age: document.getElementById(`age${i}`).value,
+                gender: document.getElementById(`gender${i}`).value,
+                accommodation: document.getElementById(`accommodation${i}`).value
+            };
+            participantsData.push(participant);
+        }
+        return participantsData;
+    }
 });
