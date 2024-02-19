@@ -14,49 +14,46 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("startRegistrationButton").addEventListener("click", function () {
         initialInfo.style.display = "none";
         participantForm.style.display = "block";
+        addParticipant(); // Adiciona campos para o primeiro participante
         createParticipantFields();
     });
 
     function createParticipantFields() {
         participantRegistrationForm.innerHTML = "";
-        for (let i = 1; i <= numberOfParticipants; i++) {
-            const participantDiv = document.createElement("div");
-            participantDiv.classList.add("participant");
-
-            participantDiv.innerHTML = `
-                <h3>Participante ${i}</h3>
-                <label for="fullName${i}">Nome Completo:</label>
-                <input type="text" id="fullName${i}" name="fullName${i}" required>
-
-                <label for="age${i}">Idade:</label>
-                <input type="number" id="age${i}" name="age${i}" min="0" max="999" required>
-
-                <label for="gender${i}">Sexo:</label>
-                <select id="gender${i}" name="gender${i}" required>
-                    <option value="">Selecione...</option>
-                    <option value="Feminino">Feminino</option>
-                    <option value="Masculino">Masculino</option>
-                </select>
-
-                <label for="accommodation${i}">Precisa de Hospedagem?</label>
-                <select id="accommodation${i}" name="accommodation${i}" required>
-                    <option value="Sim">Sim</option>
-                    <option value="Não">Não</option>
-                </select>
-            `;
-
-            participantRegistrationForm.appendChild(participantDiv);
+        for (let i = 2; i <= numberOfParticipants; i++) { // Começa com 2 pois o participante 1 já está sendo exibido
+            addParticipant();
         }
     }
 
-    document.getElementById("addParticipantButton").addEventListener("click", function () {
-        if (numberOfParticipants < 30) {
-            numberOfParticipants++;
-            createParticipantFields();
-        } else {
-            alert("Limite máximo de participantes atingido (30).");
-        }
-    });
+    function addParticipant() {
+        numberOfParticipants++;
+        const participantDiv = document.createElement("div");
+        participantDiv.classList.add("participant");
+
+        participantDiv.innerHTML = `
+            <h3>Participante ${numberOfParticipants}</h3>
+            <label for="fullName${numberOfParticipants}">Nome Completo:</label>
+            <input type="text" id="fullName${numberOfParticipants}" name="fullName${numberOfParticipants}" required>
+
+            <label for="age${numberOfParticipants}">Idade:</label>
+            <input type="number" id="age${numberOfParticipants}" name="age${numberOfParticipants}" min="0" max="999" required>
+
+            <label for="gender${numberOfParticipants}">Sexo:</label>
+            <select id="gender${numberOfParticipants}" name="gender${numberOfParticipants}" required>
+                <option value="">Selecione...</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Masculino">Masculino</option>
+            </select>
+
+            <label for="accommodation${numberOfParticipants}">Precisa de Hospedagem?</label>
+            <select id="accommodation${numberOfParticipants}" name="accommodation${numberOfParticipants}" required>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+            </select>
+        `;
+
+        participantRegistrationForm.appendChild(participantDiv);
+    }
 
     document.getElementById("reviewAndSubmitButton").addEventListener("click", function () {
         participantForm.style.display = "none";
@@ -77,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Obrigado e boa conferência!");
     });
 });
+
 
 
 
