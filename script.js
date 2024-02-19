@@ -1,56 +1,91 @@
-<!-- index.html -->
+// script.js
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Inscrição</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+document.addEventListener("DOMContentLoaded", function () {
+    const registrationForm = document.getElementById("registrationForm");
+    const participantRegistrationForm = document.getElementById("participantRegistrationForm");
+    const initialInfo = document.getElementById("initialInfo");
+    const participantForm = document.getElementById("participantForm");
+    const summary = document.getElementById("summary");
+    const totalParticipantsDiv = document.getElementById("totalParticipants");
+    const participantListDiv = document.getElementById("participantList");
 
-    <header>
-        <h1>Entremesclar - Igrejas do Grande ABC</h1>
-    </header>
+    let numberOfParticipants = 0;
 
-    <div id="participantInfo">
-        <h2>Dados da Inscrição</h2>
-        <form id="registrationForm">
-            <label for="numberOfParticipants">Número de Participantes (máx. 30):</label>
-            <input type="range" id="numberOfParticipants" name="numberOfParticipants" min="1" max="30" value="1" required>
-            <output for="numberOfParticipants" id="participantsOutput">1</output>
+    document.getElementById("startRegistrationButton").addEventListener("click", function () {
+        if (registrationForm.checkValidity()) {
+            initialInfo.style.display = "none";
+            participantForm.style.display = "block";
+            createParticipantFields();
+        } else {
+            alert("Por favor, preencha todos os campos obrigatórios corretamente.");
+        }
+    });
 
-            <div id="additionalInfo">
-                <h2>Quem é o responsável por estas inscrições?</h2>
-                
-                <label for="owner">Nome do responsável:</label>
-                <input type="text" id="owner" name="owner" required>
-                
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" required>
+    function createParticipantFields() {
+        participantRegistrationForm.innerHTML = "";
+        for (let i = 1; i <= numberOfParticipants; i++) {
+            const participantDiv = document.createElement("div");
+            participantDiv.classList.add("participant");
 
-                <label for="phone">WhatsApp para contato:</label>
-                <input type="text" id="phone" name="phone" required pattern="\+[0-9]{2} [0-9]{2} [0-9]{9}">
-                
-                <label for="city">Cidade:</label>
-                <input type="text" id="city" name="city" required>
-                
-                <label for="state">UF:</label>
-                <input type="text" id="state" name="state" required>
+            participantDiv.innerHTML = `
+                <h3>Participante ${i}</h3>
+                <label for="fullName${i}">Nome Completo:</label>
+                <input type="text" id="fullName${i}" name="fullName${i}" required>
 
-                <!-- Botão Gerar Formulário movido para o final da sessão additionalInfo -->
-                <button type="button" id="generateButton">Gerar Formulário</button>
-            </div>
-        </form>
+                <label for="age${i}">Idade:</label>
+                <input type="number" id="age${i}" name="age${i}" min="0" max="999" required>
 
-        <div id="participantForm"></div>
-    </div>
+                <label for="gender${i}">Sexo:</label>
+                <select id="gender${i}" name="gender${i}" required>
+                    <option value="">Selecione...</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Masculino">Masculino</option>
+                </select>
 
-    <script src="https://unpkg.com/imask"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+                <label for="accommodation${i}">Precisa de Hospedagem?</label>
+                <select id="accommodation${i}" name="accommodation${i}" required>
+                    <option value="Sim">Sim</option>
+                    <option value="Não">Não</option>
+                </select>
+            `;
+
+            participantRegistrationForm.appendChild(participantDiv);
+        }
+    }
+
+    document.getElementById("addParticipantButton").addEventListener("click", function () {
+        if (numberOfParticipants < 30) {
+            numberOfParticipants++;
+            createParticipantFields();
+        } else {
+            alert("Limite máximo de participantes atingido (30).");
+        }
+    });
+
+    document.getElementById("reviewAndSubmitButton").addEventListener("click", function () {
+        if (participantRegistrationForm.checkValidity()) {
+            participantForm.style.display = "none";
+            summary.style.display = "block";
+            displaySummary();
+        } else {
+            alert("Por favor, preencha todos os campos obrigatórios corretamente.");
+        }
+    });
+
+    function displaySummary() {
+        totalParticipantsDiv.textContent = `Total de Inscritos: ${numberOfParticipants}`;
+        participantListDiv.textContent = "Lista de Inscritos:";
+        for (let i = 1; i <= numberOfParticipants; i++) {
+            const fullName = document.getElementById(`fullName${i}`).value;
+            participantListDiv.textContent += `\n- ${fullName}`;
+        }
+    }
+
+    document.getElementById("submitButton").addEventListener("click", function () {
+        alert("Obrigado e boa conferência!");
+    });
+});
+
 
 
 
