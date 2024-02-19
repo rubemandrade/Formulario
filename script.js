@@ -1,69 +1,94 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let numberOfParticipants = 1; // Inicia com 1 participante
+// script.js
 
-    // Função para gerar o formulário para um participante
-    function generateParticipantForm(participantNumber) {
-        const participantFormDiv = document.getElementById("participantForm");
+document.addEventListener("DOMContentLoaded", function () {
+    const registrationForm = document.getElementById("registrationForm");
+    const participantRegistrationForm = document.getElementById("participantRegistrationForm");
+    const initialInfo = document.getElementById("initialInfo");
+    const participantForm = document.getElementById("participantForm");
+    const summary = document.getElementById("summary");
+    const totalParticipantsDiv = document.getElementById("totalParticipants");
+    const participantListDiv = document.getElementById("participantList");
+
+    let numberOfParticipants = 0;
+
+    document.getElementById("startRegistrationButton").addEventListener("click", function () {
+        numberOfParticipants = 1;
+        initialInfo.style.display = "none";
+        participantForm.style.display = "block";
+        createParticipantFields();
+    });
+
+    function createParticipantFields() {
+        participantRegistrationForm.innerHTML = "";
+        for (let i = 1; i <= numberOfParticipants; i++) {
+            addParticipant();
+        }
+    }
+
+    function addParticipant() {
         const participantDiv = document.createElement("div");
         participantDiv.classList.add("participant");
 
         participantDiv.innerHTML = `
-            <h2>Participante ${participantNumber}</h2>
-            <label for="name${participantNumber}">Nome:</label>
-            <input type="text" id="name${participantNumber}" name="name${participantNumber}" required>
+            <h3>Participante ${numberOfParticipants}</h3>
+            <label for="fullName${numberOfParticipants}">Nome Completo:</label>
+            <input type="text" id="fullName${numberOfParticipants}" name="fullName${numberOfParticipants}" required>
 
-            <label for="age${participantNumber}">Idade:</label>
-            <input type="number" id="age${participantNumber}" name="age${participantNumber}" min="0" max="999" required>
+            <label for="age${numberOfParticipants}">Idade:</label>
+            <input type="number" id="age${numberOfParticipants}" name="age${numberOfParticipants}" min="0" max="999" required>
 
-            <label for="gender${participantNumber}">Sexo:</label>
-            <select id="gender${participantNumber}" name="gender${participantNumber}" required>
+            <label for="gender${numberOfParticipants}">Sexo:</label>
+            <select id="gender${numberOfParticipants}" name="gender${numberOfParticipants}" required>
                 <option value="">Selecione</option>
-                <option value="Feminino">Feminino</option>
-                <option value="Masculino">Masculino</option>
+                <option value="F">Feminino</option>
+                <option value="M">Masculino</option>
             </select>
 
-            <label for="accommodation${participantNumber}">Precisa de hospedagem?</label>
-            <select id="accommodation${participantNumber}" name="accommodation${participantNumber}" required>
+            <label for="accommodation${numberOfParticipants}">Precisa de Hospedagem?</label>
+            <select id="accommodation${numberOfParticipants}" name="accommodation${numberOfParticipants}" required>
                 <option value="">Selecione</option>
-                <option value="Sim">Sim</option>
-                <option value="Não">Não</option>
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
             </select>
         `;
 
-        participantFormDiv.appendChild(participantDiv);
+        participantRegistrationForm.appendChild(participantDiv);
+        document.getElementById(`fullName${numberOfParticipants}`).focus();
     }
 
-    // Função para adicionar um novo participante
-    function addParticipant() {
-        if (numberOfParticipants < 30) { // Verifica se ainda não atingiu o limite de participantes
-            numberOfParticipants++; // Incrementa o número de participantes
-            generateParticipantForm(numberOfParticipants); // Gera o formulário para o novo participante
-        }
-    }
+    document.getElementById("addParticipantButton").addEventListener("click", function () {
+        numberOfParticipants++;
+        addParticipant();
+    });
 
-    // Função para revisar e enviar
-    function reviewAndSubmit() {
-        const participantList = document.getElementById("participantList");
-        participantList.innerHTML = ""; // Limpa a lista antes de preencher
+    document.getElementById("reviewAndSubmitButton").addEventListener("click", function () {
+        const participantsData = collectParticipantData();
+        totalParticipantsDiv.textContent = `Total de Participantes: ${numberOfParticipants}`;
+        participantListDiv.innerHTML = "";
+        participantsData.forEach(participant => {
+            participantListDiv.innerHTML += `<p>${participant.fullName}</p>`;
+        });
+        participantForm.style.display = "none";
+        summary.style.display = "block";
+    });
 
-        // Preenche a lista de participantes
+    document.getElementById("submitButton").addEventListener("click", function () {
+        alert("Obrigado e boa conferência!");
+        location.reload(); // Recarrega a página após submissão
+    });
+
+    function collectParticipantData() {
+        const participantsData = [];
         for (let i = 1; i <= numberOfParticipants; i++) {
-            const participantName = document.getElementById(`name${i}`).value;
-            const participantAge = document.getElementById(`age${i}`).value;
-            const listItem = document.createElement("li");
-            listItem.textContent = `Nome: ${participantName}, Idade: ${participantAge}`;
-            participantList.appendChild(listItem);
+            const participant = {
+                fullName: document.getElementById(`fullName${i}`).value,
+                age: document.getElementById(`age${i}`).value,
+                gender: document.getElementById(`gender${i}`).value,
+                accommodation: document.getElementById(`accommodation${i}`).value
+            };
+            participantsData.push(participant);
         }
-
-        // Exibe a lista e o total de inscritos
-        const reviewSection = document.getElementById("reviewSection");
-        reviewSection.style.display = "block";
-        document.getElementById("totalParticipants").textContent = `Total de inscritos: ${numberOfParticipants}`;
+        return participantsData;
     }
-
-    // Adiciona um ouvinte de evento ao botão "Adicionar Novo Participante"
-    document.getElementById("addParticipantButton").addEventListener("click", addParticipant);
-
-    // Adiciona um ouvinte de evento ao botão "Revisar e Enviar"
-    document.getElementById("reviewAndSubmitButton").addEventListener("click", reviewAndSubmit);
 });
+
