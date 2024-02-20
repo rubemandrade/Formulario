@@ -1,24 +1,43 @@
 /* Estilos para o corpo da página */
 body {
     font-family: Arial, sans-serif; /* Define a fonte padrão */
-    margin: 20px; /* Adiciona margem ao redor da página */
-    padding: 0; /* Remove o preenchimento padrão */
-    background-color: #f5f5f5; /* Define a cor de fundo */
+    margin: 20px; /* Define as margens */
+    background-color: #f0f2f5; /* Define a cor de fundo */
+}
+
+/* Estilos para o cabeçalho */
+header {
+    background-color: #fff; /* Define a cor de fundo */
+    padding: 20px; /* Adiciona preenchimento interno */
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estilos para a linha divisória */
+.divider {
+    margin: 10px auto; /* Define as margens */
+    width: 50%; /* Define a largura */
+    border-top: 1px solid #ccc; /* Adiciona uma linha sólida com cor cinza */
 }
 
 /* Estilos para o contêiner principal */
 .container {
     max-width: 800px; /* Define a largura máxima */
-    margin: 0 auto; /* Centraliza horizontalmente */
+    margin: 20px auto; /* Centraliza horizontalmente */
     background-color: #fff; /* Define a cor de fundo */
     padding: 20px; /* Adiciona preenchimento interno */
     border-radius: 8px; /* Adiciona cantos arredondados */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
 }
 
+/* Estilos para os títulos */
+h1, h2 {
+    font-size: 20px; /* Define o tamanho da fonte */
+    margin-bottom: 20px; /* Adiciona espaço abaixo do título */
+}
+
 /* Estilos para os rótulos */
 label {
-    font-size: 16px; /* Define o tamanho da fonte */
+    font-size: 14px; /* Define o tamanho da fonte */
     font-weight: bold; /* Define o texto em negrito */
 }
 
@@ -36,7 +55,7 @@ select {
     font-size: 14px; /* Define o tamanho da fonte */
 }
 
-/* Estilos para o botão */
+/* Estilos para os botões */
 button {
     background-color: #4285f4; /* Cor do Google Blue */
     color: #fff; /* Define a cor do texto */
@@ -44,7 +63,7 @@ button {
     border: none; /* Remove a borda */
     border-radius: 4px; /* Adiciona cantos arredondados */
     cursor: pointer; /* Altera o cursor ao passar */
-    font-size: 16px; /* Define o tamanho da fonte */
+    font-size: 14px; /* Define o tamanho da fonte */
     margin-right: 10px; /* Adiciona espaço à direita */
 }
 
@@ -69,3 +88,15 @@ hr {
     border: none; /* Remove a borda */
     border-top: 1px solid #ccc; /* Adiciona uma linha sólida com cor cinza */
 }
+
+/* Estilos para os itens da lista de participantes */
+.participant {
+    margin-bottom: 10px; /* Adiciona espaço abaixo do participante */
+}
+
+/* Estilos para as informações adicionais do participante */
+.participant-info {
+    font-size: 12px; /* Define o tamanho da fonte */
+    margin-left: 10px; /* Adiciona espaço à esquerda */
+}
+
